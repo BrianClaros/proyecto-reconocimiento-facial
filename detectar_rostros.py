@@ -52,8 +52,12 @@ while True:
             
             #Se establece un flag momentaneo para que el envio de mail se realice una unica vez
             if emailSend == False:
-                email.sendMsj('facedetectionunaj@gmail.com','prueba')
+                return_value, image = web_cam.read()
+                imageName = 'opencvface.jpg'
+                cv2.imwrite(imageName, image)
+                email.sendMsjImage('facedetectionunaj@gmail.com','prueba',imageName)
                 emailSend = True
+                email.stopServerEmail()
 
     # Display resize del marco  
     marco_display = cv2.resize(marco, (1200, 650), interpolation = cv2.INTER_CUBIC)
