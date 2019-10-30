@@ -2,6 +2,7 @@ import cv2
 import pickle
 import serverEmail as srEmail
 
+# from helpers.utils import obtenerPorcentajeDeDiferencia
 
 cascPath = "Cascades/haarcascade_frontalface_alt2.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
