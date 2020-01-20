@@ -1,10 +1,16 @@
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
+from datetime import datetime
+from datetime import timedelta
+
 import smtplib
 import os
 
 class ServerEmail():
+
+
+
     def __init__(self, server,port,email,password):
         self.server = server
         self.port = port
@@ -33,7 +39,8 @@ class ServerEmail():
     def sendMsjImage(self,emailDestinatary,subject,photo):
         msg = MIMEMultipart()
         img_data = open(photo, 'rb').read()
-        msg.attach(MIMEText('Se ha reconocido el rostro de la persona que ingreso al lugar', 'plain'))
+        date = self.formatTime()
+        msg.attach(MIMEText('Se ha reconocido el rostro de la persona que ingreso al lugar en la fecha '+date , 'plain'))
         image = MIMEImage(img_data, name=os.path.basename(photo))
         msg.attach(image)
         msg['From'] = self.fromEmail
@@ -43,3 +50,15 @@ class ServerEmail():
 
     def stopServerEmail(self):
         self.server.quit()
+
+    def formatTime(self):
+        date = datetime.now()
+        months = ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
+        day = date.day
+        month = months[date.month - 1]
+        year = date.year
+        hour = date.hour
+        min = date.minute
+        message = "{} de {} del {} a las {} horas con {} minutos".format(day, month, year, hour, min)
+
+        return message

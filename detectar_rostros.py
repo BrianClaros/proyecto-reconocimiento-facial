@@ -56,7 +56,7 @@ while True:
                 return_value, image = web_cam.read()
                 imageName = 'opencvface.jpg'
                 cv2.imwrite(imageName, image)
-                email.sendMsjImage('facedetectionunaj@gmail.com','prueba',imageName)
+                email.sendMsjImage('facedetectionunaj@gmail.com','ALERTA',imageName)
                 emailSend = True
                 email.stopServerEmail()
 
