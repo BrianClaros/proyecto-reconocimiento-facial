@@ -1,6 +1,7 @@
 import cv2
 import pickle
 import serverEmail as srEmail
+import time
 
 # from helpers.utils import obtenerPorcentajeDeDiferencia
 
@@ -53,6 +54,7 @@ while True:
             
             #Se establece un flag momentaneo para que el envio de mail se realice una unica vez
             if emailSend == False:
+                time.sleep(3)
                 return_value, image = web_cam.read()
                 imageName = 'opencvface.jpg'
                 cv2.imwrite(imageName, image)
