@@ -3,6 +3,7 @@ import numpy as np
 import cv2
 import time
 import pickle
+import serverEmail as srEmail
 
 cascPath = "Cascades/haarcascade_frontalface_alt2.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
@@ -16,6 +17,8 @@ etiquetas = {"nombre_persona" : 1 }
 with open("labels.pickle",'rb') as f:
     pre_etiquetas = pickle.load(f)
     etiquetas = { v:k for k,v in pre_etiquetas.items()}
+
+
 
 # Cargamos el vídeo
 web_cam = cv2.VideoCapture(0)
