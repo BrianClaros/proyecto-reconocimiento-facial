@@ -1,0 +1,5 @@
+imutils==0.5.3
+numpy==1.18.1
+opencv-contrib-python==4.2.0.32
+opencv-python==4.2.0.32
+Pillow==7.0.0
